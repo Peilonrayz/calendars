@@ -1,7 +1,7 @@
 class Julian:
     MONTHS = {
         True: [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
-        False: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        False: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
     }
 
     def __init__(self, year, month, day):
@@ -10,7 +10,7 @@ class Julian:
         self._day = day
 
     def __str__(self):
-        return f'{self._year}:{self._month}:{self._day}'
+        return f"{self._year}:{self._month}:{self._day}"
 
     @classmethod
     def from_days(cls, days):
@@ -19,7 +19,7 @@ class Julian:
         days -= cls._days_from_year(year)
         if days == 0:
             year -= 1
-        leap_year = (366 if cls._is_leap_year(year) else 365)
+        leap_year = 366 if cls._is_leap_year(year) else 365
         if days == 0:
             days += leap_year
         if days > leap_year:
@@ -40,16 +40,12 @@ class Julian:
     @staticmethod
     def _days_from_year(year):
         year -= 1
-        return (
-            year * 365
-            + year // 4
-        )
+        return year * 365 + year // 4
 
     def days(self):
         return (
             self._days_from_year(self._year)
-            + sum(self.MONTHS[self._is_leap_year(self._year)][:self._month - 1])
+            + sum(self.MONTHS[self._is_leap_year(self._year)][: self._month - 1])
             + self._day
             - 2
         )
-

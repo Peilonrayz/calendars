@@ -1,5 +1,6 @@
-from calendars import Julian, Gregorian
 import datetime
+
+from calendars import Gregorian, Julian
 
 
 def test_julian_days():
@@ -14,12 +15,8 @@ def test_julian_date():
     b = datetime.date(1, 1, 1)
     one = datetime.timedelta(1)
     for i in range(1, 737424):
-        d = Date.from_days(i)
-        assert (
-            d._year == b.year
-            and d._month == b.month
-            and d._day == b.day
-        )
+        d = Gregorian.from_days(i)
+        assert d._year == b.year and d._month == b.month and d._day == b.day
         b += one
 
 
