@@ -37,4 +37,4 @@ To run all tests run ``nox``. No venv is needed; nox makes all of them for us.
 License
 -------
 
-calendars is available under the MIT license.
+Calendars is available under the MIT license.

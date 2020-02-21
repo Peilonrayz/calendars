@@ -4,7 +4,13 @@ from pprint import pprint
 import nox
 
 
-@nox.session(python=["3.6", "3.7", "3.8"])
+@nox.session(python=["3.6"])
+def tests(session):
+    session.install(".", "pytest")
+    session.run("pytest")
+
+
+@nox.session(python=["3.8", "3.7", "3.6"])
 def coverage(session):
     session.install("coverage>=5.0.0")
     session.install("-e", ".")
@@ -36,7 +42,14 @@ def coverage_erase(session):
     session.run("coverage", "erase")
 
 
-FILES = ["src", "tests", "noxfile.py", "noxfile-lint.py", "setup.py"]
+FILES = [
+    "src",
+    "tests",
+    "noxfile.py",
+    "noxfile-lint.py",
+    "setup.py",
+    "docssrc/source/conf.py",
+]
 
 
 @nox.session
